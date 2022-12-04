@@ -23,7 +23,7 @@ function validarFormulario(e) {
     }
 
     if(editando){
-        //editarEmpleado();
+        editarEmpleado();
         editando = false;
     } else {
         objEmpleado.id = Date.now();
@@ -68,7 +68,7 @@ function validarFormulario(e) {
             parrafo.append(editarBoton);
 
             const eliminarBoton = document.createElement('button');
-            //eliminarBoton.onclick = () => eliminarEmpleado(id);
+            eliminarBoton.onclick = () => eliminarEmpleado(id);
             eliminarBoton.textContent = 'Eliminar';
             eliminarBoton.classList.add('btn','btn-eliminar');
             parrafo.append(eliminarBoton);
@@ -91,6 +91,33 @@ function validarFormulario(e) {
         formulario.querySelector('button[tyoe="submit"]').textContent = 'Actualizar';
 
         editando = true;
+
+    }
+    function editarEmpleado() {
+        objEmpleado.nombre = NombreImput.value;
+        objEmpleado.puesto = puestoImput.value;
+
+        listaEmpleados.map( empleado => {
+            if(empleado.id === objEmpleado.id){
+                empleado.nombre = objEmpleado.nombre;
+                empleado.puesto = objEmpleado.puesto;
+            }
+        });
+
+        limpiarHTML();
+        mostrarEmpleados();
+
+        formulario.reset();
+
+        formulario.querySelector('button[type="submit"]').textContent = 'Agregar';
+        editando = false;
+    }
+
+    function eliminarEmpleado(id){
+        listaEmpleados = listaEmpleados.filter(empleado => empleado.id !== id);
+
+        limpiarHTML();
+        mostrarEmpleados();
 
     }
 
