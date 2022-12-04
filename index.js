@@ -41,16 +41,16 @@ function agregarEmpleado(){
 
         mostrarEmpleados();
 
-        //formulario.reset();
+        formulario.reset();
 
-        //limpiarObjeto();
+        limpiarObjeto();
     }
 
-    //function limpiarObjeto(){
+    function limpiarObjeto(){
         objEmpleado.id = '';
         objEmpleado.nombre = '';
         objEmpleado.puesto = '';
-    //}
+    }
 
     function mostrarEmpleados(){
 
@@ -89,7 +89,7 @@ function agregarEmpleado(){
     function cargarEmpleado(empleado){
         const {id, nombre, puesto} = empleado;
 
-        NombreImput.value = nombre;
+        nombreImput.value = nombre;
         puestoImput.value = puesto;
 
         objEmpleado.id = id;
@@ -100,7 +100,7 @@ function agregarEmpleado(){
 
     }
     function editarEmpleado() {
-        objEmpleado.nombre = NombreImput.value;
+        objEmpleado.nombre = nombreImput.value;
         objEmpleado.puesto = puestoImput.value;
 
         listaEmpleados.map( empleado => {
