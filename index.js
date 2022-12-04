@@ -5,48 +5,52 @@ const objEmpleado = {
     nombre: '',
     puesto: ''
 }
+
 let editando = false;
 
-const formulario = document.querySelector('#formulario')
-const NombreImput = document.querySelector('#nombre')
-const puestoImput = document.querySelector('#puesto')
-const btnAgregar = document.querySelector('#btnAgregar')
+const formulario = document.querySelector('#formulario');
+const nombreImput = document.querySelector('#nombre');
+const puestoImput = document.querySelector('#puesto');
+const btnAgregar = document.querySelector('#btnAgregar');
 
 formulario.addEventListener('submit', validarFormulario);
 
 function validarFormulario(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    if(NombreImput.value === '' || puestoImput.value === ''){
+    if(nombreImput.value === '' || puestoImput.value === ''){
         alert('Todos los campos son obligatorios.')
         return;
     }
-
+    
     if(editando){
         editarEmpleado();
         editando = false;
     } else {
         objEmpleado.id = Date.now();
-        objEmpleado.nombre = NombreImput.value;
+        objEmpleado.nombre = nombreImput.value;
         objEmpleado.puesto = puestoImput.value;
 
         agregarEmpleado();
     }
 
-    function agregarEmpleado(){
+}    
+
+function agregarEmpleado(){
         listaEmpleados.push({...objEmpleado});
 
         mostrarEmpleados();
 
-        formulario.reset();
+        //formulario.reset();
 
-        limpiarObjeto();
+        //limpiarObjeto();
     }
-    function limpiarObjeto(){
+
+    //function limpiarObjeto(){
         objEmpleado.id = '';
         objEmpleado.nombre = '';
         objEmpleado.puesto = '';
-    }
+    //}
 
     function mostrarEmpleados(){
 
@@ -80,6 +84,8 @@ function validarFormulario(e) {
 
         });
     }
+
+
     function cargarEmpleado(empleado){
         const {id, nombre, puesto} = empleado;
 
@@ -129,4 +135,3 @@ function validarFormulario(e) {
     }
 
 
-}
