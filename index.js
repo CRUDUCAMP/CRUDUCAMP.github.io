@@ -11,7 +11,7 @@ let editando = false;
 const formulario = document.querySelector('#formulario');
 const nombreImput = document.querySelector('#nombre');
 const puestoImput = document.querySelector('#puesto');
-const btnAgregar = document.querySelector('#btnAgregar');
+const btnAgregar = document.querySelector('#ntnAgregar');
 
 formulario.addEventListener('submit', validarFormulario);
 
@@ -87,6 +87,7 @@ function agregarEmpleado(){
 
 
     function cargarEmpleado(empleado){
+
         const {id, nombre, puesto} = empleado;
 
         nombreImput.value = nombre;
@@ -94,7 +95,7 @@ function agregarEmpleado(){
 
         objEmpleado.id = id;
 
-        formulario.querySelector('button[tyoe="submit"]').textContent = 'Actualizar';
+        formulario.querySelector('button[type="submit"]').textContent = 'Actualizar'
 
         editando = true;
 
@@ -104,7 +105,8 @@ function agregarEmpleado(){
         objEmpleado.puesto = puestoImput.value;
 
         listaEmpleados.map( empleado => {
-            if(empleado.id === objEmpleado.id){
+            if(empleado.id === objEmpleado.id) {
+                empleado.id = objEmpleado.id;
                 empleado.nombre = objEmpleado.nombre;
                 empleado.puesto = objEmpleado.puesto;
             }
