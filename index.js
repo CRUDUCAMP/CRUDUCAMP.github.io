@@ -1,6 +1,28 @@
 let listaEmpleados = [];
+function addEmpleadoToSystem(id, nombre, puesto){
+    var newEmpleado = {
+        id: id,
+        nombre : nombre,
+        puesto: puesto
+    };
+    console.log(newEmpleado);
+    listaEmpleados.push(newEmpleado);
+    localStorageListaEmpleados(listaEmpleados)
+}
 
+function getListaEmpleados(){
+    var empleadoList = localStorage.getItem('localListaEmpleados');
+    if(empleadoList == null){
+        listaEmpleados = [];
 
+    } else{
+        listaEmpleados = JSON.parse(empleadoList);
+    }
+    return listaEmpleados;
+}
+ function localStorageListaEmpleados(plist){
+    localStorage.setItem('localListaEmpleados', JSON.stringify(plist));
+ }
 
 const objEmpleado = {
     id: '',
