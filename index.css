@@ -3,6 +3,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1{
+    font-size: 3.5em;
+    font-family: 'Bebas Neue', sans-serif; 
+}
+
+h4{
+    font-family: sans-serif;
+}
+
+#hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
 
 body {
     background-color: beige;
@@ -55,6 +72,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.contenedor .div-formulario form button:hover {
+    background-color: rgb(129, 98, 20);
+    color: white;
 
 }
 
@@ -123,4 +146,24 @@ body {
 
 .btn-eliminar {
     background-color: red;
+}
+
+@media (max-width: 767px){
+    .contenedor .div-listado{
+    display: flex;
+    justify-content: center;
+    }   
+
+    .contenedor .div-formulario h2{
+        margin-top: 10px;
+        font-weight: 300;
+        font-size: 1.5em;
+        color: whitesmoke;
+    }
+
+    #hero{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+    }
 }

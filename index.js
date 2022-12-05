@@ -1,5 +1,7 @@
 let listaEmpleados = [];
 
+
+
 const objEmpleado = {
     id: '',
     nombre: '',
@@ -95,7 +97,7 @@ function agregarEmpleado(){
 
         objEmpleado.id = id;
 
-        formulario.querySelector('button[type="submit"]').textContent = 'Actualizar'
+        formulario.querySelector('button[type="submit"]').textContent = 'Actualizar';
 
         editando = true;
 
