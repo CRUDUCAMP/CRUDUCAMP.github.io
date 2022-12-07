@@ -148,6 +148,11 @@ body {
     background-color: red;
 }
 
+.Footer{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 767px){
     .contenedor .div-listado{
     display: flex;
