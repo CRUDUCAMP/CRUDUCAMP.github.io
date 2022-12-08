@@ -1,28 +1,9 @@
+
+if (localStorage.getItem("empleado") === null) {
+    localStorage.setItem("empleado", JSON.stringify([]))
+}
+
 let listaEmpleados = [];
-function addEmpleadoToSystem(id, nombre, puesto){
-    var newEmpleado = {
-        id: id,
-        nombre : nombre,
-        puesto: puesto
-    };
-    console.log(newEmpleado);
-    listaEmpleados.push(newEmpleado);
-    localStorageListaEmpleados(listaEmpleados)
-}
-
-function getListaEmpleados(){
-    var empleadoList = localStorage.getItem('localListaEmpleados');
-    if(empleadoList == null){
-        listaEmpleados = [];
-
-    } else{
-        listaEmpleados = JSON.parse(empleadoList);
-    }
-    return listaEmpleados;
-}
- function localStorageListaEmpleados(plist){
-    localStorage.setItem('localListaEmpleados', JSON.stringify(plist));
- }
 
 const objEmpleado = {
     id: '',
@@ -59,9 +40,14 @@ function validarFormulario(e) {
     }
 
 }    
-
+// Usando el LocalStorage agregamos 
 function agregarEmpleado(){
-        listaEmpleados.push({...objEmpleado});
+        const empleado = JSON.parse(localStorage.getItem("empleado")); 
+        
+
+        empleado.push({...objEmpleado});
+
+        localStorage.setItem("empleado", JSON.stringify(empleado));
 
         mostrarEmpleados();
 
@@ -82,7 +68,9 @@ function agregarEmpleado(){
 
         const divEmpleados = document.querySelector('.div-empleados');
 
-        listaEmpleados.forEach( empleado => {
+        const listaempleado = JSON.parse(localStorage.getItem("empleado"))
+
+        listaempleado.forEach( empleado => {
             const {id, nombre , puesto} = empleado;
 
             const parrafo = document.createElement('p');
@@ -128,13 +116,18 @@ function agregarEmpleado(){
         objEmpleado.nombre = nombreImput.value;
         objEmpleado.puesto = puestoImput.value;
 
-        listaEmpleados.map( empleado => {
+        let empleado = JSON.parse(localStorage.getItem("empleado"));
+
+        empleado = empleado.map( empleado => {
             if(empleado.id === objEmpleado.id) {
                 empleado.id = objEmpleado.id;
                 empleado.nombre = objEmpleado.nombre;
                 empleado.puesto = objEmpleado.puesto;
             }
+            return empleado;
         });
+        
+        localStorage.setItem("empleado", JSON.stringify(empleado));
 
         limpiarHTML();
         mostrarEmpleados();
@@ -146,8 +139,15 @@ function agregarEmpleado(){
     }
 
     function eliminarEmpleado(id){
-        listaEmpleados = listaEmpleados.filter(empleado => empleado.id !== id);
 
+        let empleado = JSON.parse(localStorage.getItem("empleado")); 
+        
+        empleado = empleado.filter(empleado => empleado.id !== id);
+
+
+        localStorage.setItem("empleado", JSON.stringify(empleado));
+
+        
         limpiarHTML();
         mostrarEmpleados();
 
@@ -159,5 +159,8 @@ function agregarEmpleado(){
             divEmpleados.removeChild(divEmpleados.firstChild);
         }
     }
-
+    
+    window.onload = ()=>{
+        mostrarEmpleados();
+    }
 
