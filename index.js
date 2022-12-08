@@ -40,7 +40,7 @@ function validarFormulario(e) {
     }
 
 }    
-// Usando el LocalStorage agregamos 
+// Usando el LocalStorage.getItem obtenemos la clave de la key empleado que luego realizamos el cargue de la informacion al objempleado y guardamos todos los cambios usando Localstorage.setItem cumpliedo así con el CREATE
 function agregarEmpleado(){
         const empleado = JSON.parse(localStorage.getItem("empleado")); 
         
@@ -61,7 +61,7 @@ function agregarEmpleado(){
         objEmpleado.nombre = '';
         objEmpleado.puesto = '';
     }
-
+//Realizamos la const listaempleado usando un LocalStorage para poder leer la llave empleado desde el localstorage y cumpliendo así el READ
     function mostrarEmpleados(){
 
         limpiarHTML();
@@ -112,6 +112,8 @@ function agregarEmpleado(){
         editando = true;
 
     }
+
+    //Realizando una variable = empleado y obteniendo la informacion desde el LocalStorage de la llave empleado, y cuando realizamos la modificación la cargue nuevamente al LocalStorage, cumpliendo así el UPDATE
     function editarEmpleado() {
         objEmpleado.nombre = nombreImput.value;
         objEmpleado.puesto = puestoImput.value;
@@ -137,7 +139,7 @@ function agregarEmpleado(){
         formulario.querySelector('button[type="submit"]').textContent = 'Agregar';
         editando = false;
     }
-
+//Realizando una variable = empleado que nos permita obtener desde el localstorage la llave empleado, y que cuando realizemos la eliminación se guarde la dicha tambien en el localStorage, cumpliendo asi el DELETE
     function eliminarEmpleado(id){
 
         let empleado = JSON.parse(localStorage.getItem("empleado")); 
